@@ -28,6 +28,7 @@ export const Header = ({
           <input
             autoFocus
             type="text"
+            name="list-name"
             value={newListTitle}
             onChange={(e) => setNewListTitle(e.target.value)}
             placeholder="Add a new list"
