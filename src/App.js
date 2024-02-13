@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Header } from "./components/Header";
 import { Lists } from "./components/Lists";
 import defaultShoppingLists from "./default-shopping-lists";
-import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 
 export default function App() {
@@ -21,13 +20,15 @@ export default function App() {
 
   const AddList = (e) => {
     e.preventDefault();
+    const nextID = lists.length ? lists[lists.length - 1].id + 1 : 1;
     if (!newListTitle) {
       setAddingList(false);
       return;
     }
+    //
     setLists([
       {
-        id: uuidv4(),
+        id: nextID,
         store: newListTitle,
         items: [],
       },
@@ -44,15 +45,13 @@ export default function App() {
       return;
     }
 
-    const newItem = {
-      id: uuidv4(),
-      text: newItemText,
-      completed: false,
-    };
-
     const newLists = lists.map((list) => {
       if (list.id === listBeingEdited) {
-        return { ...list, items: [...list.items, newItem] };
+        return { ...list, items: [...list.items, {
+          id: list.items.length ? list.items[list.items.length - 1].id + 1 : 1,
+          text: newItemText,
+          completed: false,
+        }] };
       }
       return list;
     });
