@@ -12,7 +12,7 @@ export const EditList = ({
   return (
     <li className="edit-list">
       <MdAddShoppingCart
-        size="20"
+        size="24"
         onClick={() => {
           ToggleListIsEditing(list);
         }}

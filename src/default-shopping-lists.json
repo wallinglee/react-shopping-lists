@@ -1,6 +1,8 @@
 [{
   "id": 1,
   "store": "Costco",
+  "completed": false,
+  "expanded": false,
   "items": [{
     "id": 1,
     "text": "Bacon Crumbles",
@@ -73,6 +75,8 @@
 }, {
   "id": 2,
   "store": "Trader Joes",
+  "completed": false,
+  "expanded": false,
   "items": [{
     "id": 1,
     "text": "Salads",
@@ -125,6 +129,8 @@
 }, {
   "id": 3,
   "store": "Stop&Shop",
+  "completed": false,
+  "expanded": false,
   "items": [{
     "id": 1,
     "text": "Lemons",
@@ -181,6 +187,8 @@
 }, {
   "id": 4,
   "store": "Home Depot",
+  "completed": false,
+  "expanded": false,
   "items": [{
     "id": 1,
     "text": "RID-X Septic (3-Dose)",

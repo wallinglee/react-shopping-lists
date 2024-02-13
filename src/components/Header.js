@@ -14,7 +14,7 @@ export const Header = ({
         Shopping lists
         <RiPlayListAddLine
           id="icon-add-list"
-          size="18"
+          size="24"
           title="Add a new list"
           onClick={ToggleAddList}
         />

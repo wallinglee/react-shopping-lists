@@ -70,11 +70,6 @@ export default function App() {
     setNewItemText("");
   };
 
-  const toggleEditingItem = (list, item) => {
-    console.log(list);
-    console.log(item);
-  };
-
   const toggleComplete = (targetList, id) => {
     const thisList = lists.find((obj) => obj.id === targetList.id);
     const updatedListItems = thisList.items.map((item) =>
@@ -110,6 +105,22 @@ export default function App() {
     setLists(updatedLists);
   };
 
+  const toggleList = (toggledList) => {
+    setLists(
+      lists.map((list) =>
+        list.id === toggledList.id ? { ...list, expanded: !list.expanded } : list
+      )
+    );
+  };
+
+  const toggleListComplete = (toggledList) => {
+    setLists(
+      lists.map((list) =>
+        list.id === toggledList.id ? { ...list, completed: !list.completed } : list
+      )
+    );
+  };
+
   useEffect(() => {
     localStorage.setItem("shoppingLists", JSON.stringify(lists));
   }, [lists]);
@@ -132,7 +143,7 @@ export default function App() {
               list={list}
               listBeingEdited={listBeingEdited}
               toggleComplete={toggleComplete}
-              toggleEditingItem={toggleEditingItem}
+              toggleListComplete={toggleListComplete}
               removeItem={removeItem}
               ToggleListIsEditing={ToggleListIsEditing}
               setNewItemText={setNewItemText}
@@ -140,6 +151,7 @@ export default function App() {
               AddItem={AddItem}
               newItemText={newItemText}
               removeList={removeList}
+              toggleList={toggleList}
             />
           ))}
         </ul>

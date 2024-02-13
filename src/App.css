@@ -22,14 +22,34 @@
   padding: 3px 0;
 }
 
-.App h3 {
-  margin: 0 0 10px;
+.App .list-name {
+  margin: 0;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.App .list-name.expanded {
+  margin-bottom: 10px;
+}
+
+.App .list-name > span {
   display: flex;
   gap: 5px;
   align-items: center;
 }
 
-.App h3 .icon-remove-list {
+.App .list-name > span > strong {
+  cursor: pointer;
+}
+
+.App .list-name.completed > span {
+  text-decoration: line-through;
+}
+
+.App h3 .icon-remove-list,
+.App h3 .icon-expand-list {
   cursor: pointer;
 }
 
@@ -65,7 +85,7 @@
 }
 
 .completed {
-  opacity: 0.5;
+  opacity: 0.3;
   text-decoration: line-through;
 }
 

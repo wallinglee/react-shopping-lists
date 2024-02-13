@@ -1,6 +1,6 @@
 import { CiSquareRemove } from "react-icons/ci";
 
-export const ListItem = ({ item, toggleComplete, list, removeItem }) => {
+export const ListItem = ({ item, toggleComplete, removeItem, list }) => {
   return (
     <li
       key={item.id}
@@ -10,7 +10,7 @@ export const ListItem = ({ item, toggleComplete, list, removeItem }) => {
       {item.completed && (
         <>
           <CiSquareRemove
-            size="20"
+            size="24"
             onClick={() => {
               removeItem(item, list);
             }}
