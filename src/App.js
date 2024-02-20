@@ -230,7 +230,6 @@ export default function App() {
         setNewListTitle={setNewListTitle}
         cancelAddList={cancelAddList}
       />
-      <div>expandedLists: {expandedLists}</div>
       {lists && lists.length > 0 ? (
         <ul id="shopping-lists">
           {lists.map((list) => (
