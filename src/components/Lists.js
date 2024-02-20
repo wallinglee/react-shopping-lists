@@ -3,22 +3,23 @@ import { EditList } from "./EditList";
 import { CiSquareRemove, CiSquarePlus, CiSquareMinus } from "react-icons/ci";
 
 export const Lists = ({
-  toggleComplete,
+  toggleItemComplete,
   toggleListComplete,
   list,
-  removeItem,
+  deleteItem,
   listBeingEdited,
-  ToggleListIsEditing,
+  toggleListEditing,
   setNewItemText,
   cancelAddItem,
   AddItem,
   newItemText,
-  removeList,
+  deleteList,
   toggleList,
+  expandedLists
 }) => {
   return (
     <li key={list.id}>
-      <h3 className={"list-name" + (list.expanded ? " expanded" : "") + (list.completed ? " completed" : "")}>
+      <h3 className={"list-name" + (expandedLists.includes(list.id) ? " expanded" : "") + (list.completed ? " completed" : "")}>
         <span>
           <strong
             onClick={() => {
@@ -30,15 +31,16 @@ export const Lists = ({
           {list.completed && (
             <CiSquareRemove
               className="icon-remove-list"
+              title={`Delete ${list.store}`}
               size="24"
               onClick={() => {
-                removeList(list);
+                deleteList(list);
               }}
             />
           )}
         </span>
         <span>
-          {list.expanded ? (
+          {expandedLists.includes(list.id) ? (
             <CiSquareMinus
               className="icon-expand-list"
               size="24"
@@ -57,21 +59,21 @@ export const Lists = ({
           )}
         </span>
       </h3>
-      {list.expanded && (
+      {expandedLists.includes(list.id) && (
         <ul>
           {list.items.map((item) => (
             <ListItem
               key={item.id}
               item={item}
-              toggleComplete={toggleComplete}
-              removeItem={removeItem}
+              toggleItemComplete={toggleItemComplete}
+              deleteItem={deleteItem}
               list={list}
             />
           ))}
           <EditList
             list={list}
             listBeingEdited={listBeingEdited}
-            ToggleListIsEditing={ToggleListIsEditing}
+            toggleListEditing={toggleListEditing}
             AddItem={AddItem}
             newItemText={newItemText}
             cancelAddItem={cancelAddItem}

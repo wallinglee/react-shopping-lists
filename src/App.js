@@ -5,13 +5,14 @@ import defaultShoppingLists from "./default-shopping-lists";
 import "./App.css";
 
 export default function App() {
-  const [lists, setLists] = useState(
-    JSON.parse(localStorage.getItem("shoppingLists")) || defaultShoppingLists
-  );
+  const [lists, setLists] = useState(defaultShoppingLists);
   const [addingList, setAddingList] = useState(false);
   const [newListTitle, setNewListTitle] = useState("");
   const [newItemText, setNewItemText] = useState("");
   const [listBeingEdited, setListBeingEdited] = useState(null);
+  const [expandedLists, setExpandedLists] = useState(
+    JSON.parse(localStorage.getItem("expandedLists")) || []
+  );
 
   const ToggleAddList = () => {
     setNewListTitle("");
@@ -20,20 +21,34 @@ export default function App() {
 
   const AddList = (e) => {
     e.preventDefault();
-    const nextID = lists.length ? lists[lists.length - 1].id + 1 : 1;
     if (!newListTitle) {
       setAddingList(false);
       return;
-    }
-    //
-    setLists([
-      {
-        id: nextID,
-        store: newListTitle,
-        items: [],
-      },
-      ...lists,
-    ]);
+    };
+
+    const newList = {
+      "store": newListTitle,
+      "completed": false,
+      "expanded": true,
+      "items": []
+    };
+
+    fetch(`https://shopping-lists-6vj9.onrender.com/lists/`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(newList),
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      fetchLists();
+    })
+    .catch((error) => {
+      console.log(error)
+    });
+
+    // Reset form 
     setNewListTitle("");
     setAddingList(false);
   };
@@ -45,18 +60,34 @@ export default function App() {
       return;
     }
 
-    const newLists = lists.map((list) => {
-      if (list.id === listBeingEdited) {
-        return { ...list, items: [...list.items, {
-          id: list.items.length ? list.items[list.items.length - 1].id + 1 : 1,
-          text: newItemText,
-          completed: false,
-        }] };
-      }
-      return list;
+    const thisList = lists.find((obj) => obj.id === listBeingEdited);
+    
+    const newItems = [...thisList.items, {
+      id: thisList.items.length ? thisList.items[thisList.items.length - 1].id + 1 : 1,
+      text: newItemText,
+      completed: false
+    }];
+    
+    const updatedItems = {
+      items: newItems
+    };
+    
+    fetch(`https://shopping-lists-6vj9.onrender.com/lists/${listBeingEdited}`, {
+      method: "PATCH",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(updatedItems),
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      fetchLists();
+    })
+    .catch((error) => {
+      console.log(error)
     });
 
-    setLists(newLists);
+    // Reset form
     setNewItemText("");
     setListBeingEdited(null);
   };
@@ -70,60 +101,124 @@ export default function App() {
     setNewItemText("");
   };
 
-  const toggleComplete = (targetList, id) => {
+  const toggleItemComplete = (targetList, itemID) => {
     const thisList = lists.find((obj) => obj.id === targetList.id);
     const updatedListItems = thisList.items.map((item) =>
-      item.id === id ? { ...item, completed: !item.completed } : item
+      item.id === itemID ? { ...item, completed: !item.completed } : item
     );
-    setLists(
-      lists.map((list) =>
-        list.id === targetList.id ? { ...list, items: updatedListItems } : list
-      )
-    );
+    const updatedItems = {
+      items: updatedListItems
+    };
+    fetch(`https://shopping-lists-6vj9.onrender.com/lists/${targetList.id}`, {
+      method: "PATCH",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(updatedItems),
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      fetchLists();
+    })
+    .catch((error) => {
+      console.log(error)
+    });
   };
 
-  const ToggleListIsEditing = (list) => {
-    setListBeingEdited(list.id);
+  const toggleListEditing = (list) => {
+    setListBeingEdited(listBeingEdited === list.id ? null : list.id);
     setNewItemText("");
   };
 
-  const removeItem = (item, list) => {
-    const updatedItems = list.items.filter((itm) => itm.id !== item.id);
-
-    const newLists = lists.map((obj) => {
-      if (obj.id === list.id) {
-        return { ...obj, items: updatedItems };
-      }
-      return obj;
+  const deleteItem = (item, list) => {
+    const filteredItems = list.items.filter((itm) => itm.id !== item.id);
+    const updatedItems = {
+      items: filteredItems
+    };
+    fetch(`https://shopping-lists-6vj9.onrender.com/lists/${list.id}`, {
+      method: "PATCH",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(updatedItems),
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      fetchLists();
+    })
+    .catch((error) => {
+      console.log(error)
     });
-
-    setLists(newLists);
   };
 
-  const removeList = (list) => {
-    const updatedLists = lists.filter((obj) => obj.id !== list.id);
-    setLists(updatedLists);
+  const deleteList = (list) => {
+    const filteredExpanded = expandedLists.filter((item) => item !== list.id);
+    setExpandedLists(filteredExpanded);
+    localStorage.setItem("expandedLists", JSON.stringify(filteredExpanded));
+
+    fetch(`https://shopping-lists-6vj9.onrender.com/lists/${list.id}`, {
+      method: "DELETE",
+      headers: {"Content-Type": "application/json"}
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      fetchLists();
+    })
+    .catch((error) => {
+      console.log(error)
+    });
   };
 
   const toggleList = (toggledList) => {
-    setLists(
-      lists.map((list) =>
-        list.id === toggledList.id ? { ...list, expanded: !list.expanded } : list
-      )
-    );
+    const exists = expandedLists.includes(toggledList.id);
+    if(exists){
+      const filteredExpanded = expandedLists.filter((item) => item !== toggledList.id);
+      setExpandedLists(filteredExpanded);
+      localStorage.setItem("expandedLists", JSON.stringify(filteredExpanded));
+    } else {
+      setExpandedLists([...expandedLists, toggledList.id]);
+      localStorage.setItem("expandedLists", JSON.stringify([...expandedLists, toggledList.id]));
+    }
   };
 
   const toggleListComplete = (toggledList) => {
-    setLists(
-      lists.map((list) =>
-        list.id === toggledList.id ? { ...list, completed: !list.completed } : list
-      )
-    );
+    const completed = {
+      completed: !toggledList.completed
+    };
+    fetch(`https://shopping-lists-6vj9.onrender.com/lists/${toggledList.id}`, {
+      method: "PATCH",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(completed),
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      fetchLists();
+    })
+    .catch((error) => {
+      console.log(error)
+    });
+  };
+  
+  const fetchLists = () => {
+    fetch("https://shopping-lists-6vj9.onrender.com/lists/")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setLists(data);
+      })
+      .catch((error) => {
+        console.log(error)
+      });
   };
 
   useEffect(() => {
-    localStorage.setItem("shoppingLists", JSON.stringify(lists));
-  }, [lists]);
+    fetchLists();
+  }, []);
 
   return (
     <div className="App">
@@ -135,23 +230,25 @@ export default function App() {
         setNewListTitle={setNewListTitle}
         cancelAddList={cancelAddList}
       />
+      <div>expandedLists: {expandedLists}</div>
       {lists && lists.length > 0 ? (
-        <ul>
+        <ul id="shopping-lists">
           {lists.map((list) => (
             <Lists
               key={list.id}
               list={list}
               listBeingEdited={listBeingEdited}
-              toggleComplete={toggleComplete}
+              toggleItemComplete={toggleItemComplete}
               toggleListComplete={toggleListComplete}
-              removeItem={removeItem}
-              ToggleListIsEditing={ToggleListIsEditing}
+              deleteItem={deleteItem}
+              toggleListEditing={toggleListEditing}
               setNewItemText={setNewItemText}
               cancelAddItem={cancelAddItem}
               AddItem={AddItem}
               newItemText={newItemText}
-              removeList={removeList}
+              deleteList={deleteList}
               toggleList={toggleList}
+              expandedLists={expandedLists}
             />
           ))}
         </ul>

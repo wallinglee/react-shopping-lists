@@ -1,4 +1,4 @@
-import { RiPlayListAddLine } from "react-icons/ri";
+import { MdAddShoppingCart } from "react-icons/md";
 
 export const Header = ({
   ToggleAddList,
@@ -12,7 +12,7 @@ export const Header = ({
     <>
       <h1>
         Shopping lists
-        <RiPlayListAddLine
+        <MdAddShoppingCart
           id="icon-add-list"
           size="24"
           title="Add a new list"

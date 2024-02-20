@@ -1,8 +1,8 @@
-import { MdAddShoppingCart } from "react-icons/md";
+import { RiPlayListAddLine } from "react-icons/ri";
 
 export const EditList = ({
   AddItem,
-  ToggleListIsEditing,
+  toggleListEditing,
   list,
   listBeingEdited,
   newItemText,
@@ -11,10 +11,11 @@ export const EditList = ({
 }) => {
   return (
     <li className="edit-list">
-      <MdAddShoppingCart
+      <RiPlayListAddLine
+        title={`Add a new item to ${list.store}`}
         size="24"
         onClick={() => {
-          ToggleListIsEditing(list);
+          toggleListEditing(list);
         }}
       />
       {list.id === listBeingEdited && (
@@ -24,7 +25,7 @@ export const EditList = ({
             type="text"
             value={newItemText}
             onChange={(e) => setNewItemText(e.target.value)}
-            placeholder="Add item"
+            placeholder={`Add a new item to ${list.store}`}
           />
           <button type="submit">Add</button>
           <button type="reset" onClick={cancelAddItem}>

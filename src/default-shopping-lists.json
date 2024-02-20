@@ -193,5 +193,13 @@
     "id": 1,
     "text": "RID-X Septic (3-Dose)",
     "completed": false
+  }, {
+    "id": 2,
+    "text": "4x8 OSB plywood",
+    "completed": false
+  }, {
+    "id": 3,
+    "text": "16 inch pavers",
+    "completed": false
   }]
 }]
