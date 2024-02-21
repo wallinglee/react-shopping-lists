@@ -119,12 +119,14 @@
   gap: 5px;
 }
 
-#form-add-item input[type="text"] {
-  min-width: 170px;
+#form-add-item input[type="text"],
+#form-add-list input[type="text"] {
+  min-width: 150px;
   min-height: 20px;
   padding: 1px 10px;
 }
 
-#form-add-item button {
+#form-add-item button,
+#form-add-list button {
   padding: 3px 6px;
 }

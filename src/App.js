@@ -27,7 +27,7 @@ export default function App() {
     const newList = {
       "store": newListTitle,
       "completed": false,
-      "expanded": true,
+      "expanded": false,
       "items": []
     };
 
