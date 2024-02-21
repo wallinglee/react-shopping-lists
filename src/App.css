@@ -73,6 +73,15 @@
   gap: 5px;
 }
 
+/* .App ul ul li.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  flex-grow: 1;
+  max-width: 50%;
+} */
+
 .App ul ul li.list-item p {
   margin: 0;
 }

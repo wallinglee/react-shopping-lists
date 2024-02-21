@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Header } from "./components/Header";
-import { Lists } from "./components/Lists";
+import { ListsWrapper } from "./components/ListsWrapper";
 import defaultShoppingLists from "./default-shopping-lists";
 import "./App.css";
 
@@ -10,9 +10,7 @@ export default function App() {
   const [newListTitle, setNewListTitle] = useState("");
   const [newItemText, setNewItemText] = useState("");
   const [listBeingEdited, setListBeingEdited] = useState(null);
-  const [expandedLists, setExpandedLists] = useState(
-    JSON.parse(localStorage.getItem("expandedLists")) || []
-  );
+  const [expandedLists, setExpandedLists] = useState(JSON.parse(localStorage.getItem("expandedLists")) || []);
 
   const ToggleAddList = () => {
     setNewListTitle("");
@@ -231,28 +229,23 @@ export default function App() {
         cancelAddList={cancelAddList}
       />
       {lists && lists.length > 0 ? (
-        <ul id="shopping-lists">
-          {lists.map((list) => (
-            <Lists
-              key={list.id}
-              list={list}
-              listBeingEdited={listBeingEdited}
-              toggleItemComplete={toggleItemComplete}
-              toggleListComplete={toggleListComplete}
-              deleteItem={deleteItem}
-              toggleListEditing={toggleListEditing}
-              setNewItemText={setNewItemText}
-              cancelAddItem={cancelAddItem}
-              AddItem={AddItem}
-              newItemText={newItemText}
-              deleteList={deleteList}
-              toggleList={toggleList}
-              expandedLists={expandedLists}
-            />
-          ))}
-        </ul>
+        <ListsWrapper
+          lists={lists}
+          listBeingEdited={listBeingEdited}
+          toggleItemComplete={toggleItemComplete}
+          toggleListComplete={toggleListComplete}
+          deleteItem={deleteItem}
+          toggleListEditing={toggleListEditing}
+          setNewItemText={setNewItemText}
+          cancelAddItem={cancelAddItem}
+          AddItem={AddItem}
+          newItemText={newItemText}
+          deleteList={deleteList}
+          toggleList={toggleList}
+          expandedLists={expandedLists}
+        />
       ) : (
-        <div>no lists...</div>
+        <div>No shopping lists to display.</div>
       )}
     </div>
   );

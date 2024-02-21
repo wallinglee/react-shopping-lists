@@ -18,7 +18,7 @@ export const Lists = ({
   expandedLists
 }) => {
   return (
-    <li key={list.id}>
+    <li key={list.id} draggable>
       <h3 className={"list-name" + (expandedLists.includes(list.id) ? " expanded" : "") + (list.completed ? " completed" : "")}>
         <span>
           <strong
