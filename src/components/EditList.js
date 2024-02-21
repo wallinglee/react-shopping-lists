@@ -12,7 +12,7 @@ export const EditList = ({
   return (
     <li className="edit-list">
       <RiPlayListAddLine
-        title={`Add a new item to ${list.store}`}
+        title={`Add to ${list.store}`}
         size="24"
         onClick={() => {
           toggleListEditing(list);
@@ -25,7 +25,7 @@ export const EditList = ({
             type="text"
             value={newItemText}
             onChange={(e) => setNewItemText(e.target.value)}
-            placeholder={`Add a new item to ${list.store}`}
+            placeholder={`Add to ${list.store}`}
           />
           <button type="submit">Add</button>
           <button type="reset" onClick={cancelAddItem}>

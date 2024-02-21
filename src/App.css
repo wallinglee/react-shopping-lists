@@ -120,7 +120,7 @@
 }
 
 #form-add-item input[type="text"] {
-  min-width: 240px;
+  min-width: 170px;
   min-height: 20px;
   padding: 1px 10px;
 }
