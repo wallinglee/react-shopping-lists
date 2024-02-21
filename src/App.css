@@ -91,6 +91,7 @@
   display: flex;
   flex-direction: row;
   gap: 5px;
+  padding: 4px 5px;
 }
 
 .completed {
@@ -116,4 +117,14 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+}
+
+#form-add-item input[type="text"] {
+  min-width: 240px;
+  min-height: 20px;
+  padding: 1px 10px;
+}
+
+#form-add-item button {
+  padding: 3px 6px;
 }
