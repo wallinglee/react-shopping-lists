@@ -91,7 +91,12 @@
   display: flex;
   flex-direction: row;
   gap: 5px;
-  padding: 4px 5px;
+  padding: 4px 0;
+}
+
+.App ul ul li.edit-list.active {
+  flex-basis: 100%;
+  justify-content: flex-start;
 }
 
 .completed {
@@ -115,7 +120,8 @@
 #form-add-item {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  flex-basis: 100%;
   gap: 5px;
 }
 
@@ -123,10 +129,12 @@
 #form-add-list input[type="text"] {
   min-width: 150px;
   min-height: 20px;
-  padding: 1px 10px;
+  padding: 1px 5px;
+  flex-grow: 2;
 }
 
 #form-add-item button,
 #form-add-list button {
-  padding: 3px 6px;
+  padding: 3px 5px;
+  flex-grow: 1;
 }
