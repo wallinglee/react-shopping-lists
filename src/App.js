@@ -61,7 +61,7 @@ export default function App() {
     const thisList = lists.find((obj) => obj.id === listBeingEdited);
     
     const newItems = [...thisList.items, {
-      id: thisList.items.length ? thisList.items[thisList.items.length - 1].id + 1 : 1,
+      id: Date.now(),
       text: newItemText,
       completed: false
     }];
@@ -104,6 +104,7 @@ export default function App() {
     const updatedListItems = thisList.items.map((item) =>
       item.id === itemID ? { ...item, completed: !item.completed } : item
     );
+    updatedListItems.sort((a, b) => a.completed - b.completed || a.id - b.id);
     const updatedItems = {
       items: updatedListItems
     };
