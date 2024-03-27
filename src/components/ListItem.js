@@ -5,7 +5,6 @@ export const ListItem = ({ item, toggleItemComplete, deleteItem, list }) => {
     <li
       key={item.id}
       className={"list-item" + (item.completed ? " completed" : "")}
-      draggable
     >
       <p onClick={() => toggleItemComplete(list, item.id)}>{item.text}</p>
       {item.completed && (

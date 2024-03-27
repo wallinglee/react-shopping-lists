@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
 import { Header } from "./components/Header";
 import { ListsWrapper } from "./components/ListsWrapper";
-import defaultShoppingLists from "./default-shopping-lists";
 import "./App.css";
 
+const API_URL = "https://shopping-lists-6vj9.onrender.com/lists/";
+
 export default function App() {
-  const [lists, setLists] = useState(defaultShoppingLists);
+  const [lists, setLists] = useState([]);
   const [addingList, setAddingList] = useState(false);
   const [newListTitle, setNewListTitle] = useState("");
   const [newItemText, setNewItemText] = useState("");
   const [listBeingEdited, setListBeingEdited] = useState(null);
   const [expandedLists, setExpandedLists] = useState(JSON.parse(localStorage.getItem("expandedLists")) || []);
+  const [isLoading, setIsLoading] = useState(true);
 
   const ToggleAddList = () => {
     setNewListTitle("");
@@ -31,7 +33,7 @@ export default function App() {
       "items": []
     };
 
-    fetch(`https://shopping-lists-6vj9.onrender.com/lists/`, {
+    fetch(API_URL, {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(newList),
@@ -70,7 +72,7 @@ export default function App() {
       items: newItems
     };
     
-    fetch(`https://shopping-lists-6vj9.onrender.com/lists/${listBeingEdited}`, {
+    fetch(API_URL + `${listBeingEdited}`, {
       method: "PATCH",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(updatedItems),
@@ -108,7 +110,7 @@ export default function App() {
     const updatedItems = {
       items: updatedListItems
     };
-    fetch(`https://shopping-lists-6vj9.onrender.com/lists/${targetList.id}`, {
+    fetch(API_URL + `${targetList.id}`, {
       method: "PATCH",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(updatedItems),
@@ -134,7 +136,7 @@ export default function App() {
     const updatedItems = {
       items: filteredItems
     };
-    fetch(`https://shopping-lists-6vj9.onrender.com/lists/${list.id}`, {
+    fetch(API_URL + `${list.id}`, {
       method: "PATCH",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(updatedItems),
@@ -155,7 +157,7 @@ export default function App() {
     setExpandedLists(filteredExpanded);
     localStorage.setItem("expandedLists", JSON.stringify(filteredExpanded));
 
-    fetch(`https://shopping-lists-6vj9.onrender.com/lists/${list.id}`, {
+    fetch(API_URL + `${list.id}`, {
       method: "DELETE",
       headers: {"Content-Type": "application/json"}
     })
@@ -168,6 +170,38 @@ export default function App() {
     .catch((error) => {
       console.log(error)
     });
+  };
+
+  const resetList = (list) => {
+    const updatedListItems = list.items.map((item) =>
+      item.completed === true ? { ...item, completed: false } : item
+    );
+    updatedListItems.sort((a, b) => a.completed - b.completed || a.id - b.id);
+    const updatedItems = {
+      items: updatedListItems
+    };
+    fetch(API_URL + `${list.id}`, {
+      method: "PATCH",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(updatedItems),
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      fetchLists();
+    })
+    .catch((error) => {
+      console.log(error)
+    });
+  };
+
+  const listIsResettable = (list) => {
+    let resettable = false;
+    list.items.forEach((item) => {
+      if(item.completed) resettable = true;
+    });
+    return resettable;
   };
 
   const toggleList = (toggledList) => {
@@ -186,7 +220,7 @@ export default function App() {
     const completed = {
       completed: !toggledList.completed
     };
-    fetch(`https://shopping-lists-6vj9.onrender.com/lists/${toggledList.id}`, {
+    fetch(API_URL + `${toggledList.id}`, {
       method: "PATCH",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(completed),
@@ -203,12 +237,13 @@ export default function App() {
   };
   
   const fetchLists = () => {
-    fetch("https://shopping-lists-6vj9.onrender.com/lists/")
+    fetch(API_URL)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         setLists(data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error)
@@ -229,25 +264,32 @@ export default function App() {
         setNewListTitle={setNewListTitle}
         cancelAddList={cancelAddList}
       />
-      {lists && lists.length > 0 ? (
-        <ListsWrapper
-          lists={lists}
-          listBeingEdited={listBeingEdited}
-          toggleItemComplete={toggleItemComplete}
-          toggleListComplete={toggleListComplete}
-          deleteItem={deleteItem}
-          toggleListEditing={toggleListEditing}
-          setNewItemText={setNewItemText}
-          cancelAddItem={cancelAddItem}
-          AddItem={AddItem}
-          newItemText={newItemText}
-          deleteList={deleteList}
-          toggleList={toggleList}
-          expandedLists={expandedLists}
-        />
-      ) : (
-        <div>No shopping lists to display.</div>
-      )}
+      {isLoading && <div>Loading shopping lists...</div>}
+      {!isLoading &&
+        <>
+          {lists && lists.length ? (
+            <ListsWrapper
+              lists={lists}
+              listBeingEdited={listBeingEdited}
+              toggleItemComplete={toggleItemComplete}
+              toggleListComplete={toggleListComplete}
+              deleteItem={deleteItem}
+              toggleListEditing={toggleListEditing}
+              setNewItemText={setNewItemText}
+              cancelAddItem={cancelAddItem}
+              AddItem={AddItem}
+              newItemText={newItemText}
+              deleteList={deleteList}
+              resetList={resetList}
+              listIsResettable={listIsResettable}
+              toggleList={toggleList}
+              expandedLists={expandedLists}
+            />
+          ) : (
+            <div>No shopping lists to display.</div>
+          )}
+        </>
+      }
     </div>
   );
 }

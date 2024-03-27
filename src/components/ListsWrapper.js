@@ -12,6 +12,8 @@ export const ListsWrapper = ({
   AddItem,
   newItemText,
   deleteList,
+  resetList,
+  listIsResettable,
   toggleList,
   expandedLists
 }) => {
@@ -31,6 +33,8 @@ export const ListsWrapper = ({
           AddItem={AddItem}
           newItemText={newItemText}
           deleteList={deleteList}
+          resetList={resetList}
+          listIsResettable={listIsResettable}
           toggleList={toggleList}
           expandedLists={expandedLists}
         />

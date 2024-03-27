@@ -1,353 +1,387 @@
-[{
-  "id": 1,
-  "store": "Costco",
-  "completed": false,
-  "expanded": false,
-  "items": [{
-      "id": 1,
-      "text": "Ziploc bags",
-      "completed": false
-    },
-    {
-      "id": 2,
-      "text": "Lysol (3-count)",
-      "completed": false
-    },
-    {
-      "id": 3,
-      "text": "Tide Pods (F & G)",
-      "completed": false
-    },
-    {
-      "id": 4,
-      "text": "Egg Bites (Bacon/Gruyere)",
-      "completed": false
-    },
-    {
-      "id": 5,
-      "text": "Rotisserie Chicken",
-      "completed": false
-    },
-    {
-      "id": 6,
-      "text": "Bottled Water (40)",
-      "completed": false
-    },
-    {
-      "id": 7,
-      "text": "Blueberries",
-      "completed": false
-    },
-    {
-      "id": 8,
-      "text": "Blackberries",
-      "completed": false
-    },
-    {
-      "id": 9,
-      "text": "Raspberries",
-      "completed": false
-    },
-    {
-      "id": 10,
-      "text": "Strawberries",
-      "completed": false
-    },
-    {
-      "id": 11,
-      "text": "Paper Towels (Bounty)",
-      "completed": false
-    },
-    {
-      "id": 12,
-      "text": "Toilet Paper (Charmin)",
-      "completed": false
-    },
-    {
-      "id": 13,
-      "text": "Oat Milk (6)",
-      "completed": false
-    },
-    {
-      "id": 14,
-      "text": "Butter (Kerrygold)",
-      "completed": false
-    },
-    {
-      "id": 15,
-      "text": "Mayonnaise",
-      "completed": false
-    },
-    {
-      "id": 16,
-      "text": "Ketchup",
-      "completed": false
-    },
-    {
-      "id": 17,
-      "text": "Cilantro Lime Rice",
-      "completed": false
-    },
-    {
-      "id": 18,
-      "text": "Bacon crumbles",
-      "completed": false
-    },
-    {
-      "id": 19,
-      "text": "Nongshim Ramen",
-      "completed": false
-    },
-    {
-      "id": 20,
-      "text": "Aller-Fex",
-      "completed": false
-    },
-    {
-      "id": 21,
-      "text": "Aleve",
-      "completed": false
-    },
-    {
-      "id": 22,
-      "text": "Dove Bar Soap",
-      "completed": false
-    },
-    {
-      "id": 23,
-      "text": "Liquid I.V.",
-      "completed": false
-    }
-  ]
-},
-{
-  "id": 2,
-  "store": "Trader Joes",
-  "completed": false,
-  "expanded": false,
-  "items": [{
-      "id": 1,
-      "text": "Salads",
-      "completed": false
-    },
-    {
-      "id": 2,
-      "text": "Bananas (3)",
-      "completed": false
-    },
-    {
-      "id": 3,
-      "text": "Lemons (4)",
-      "completed": false
-    },
-    {
-      "id": 4,
-      "text": "Rosemary Ham",
-      "completed": false
-    },
-    {
-      "id": 5,
-      "text": "Smoked Turkey",
-      "completed": false
-    },
-    {
-      "id": 6,
-      "text": "Cheddar slices",
-      "completed": false
-    },
-    {
-      "id": 7,
-      "text": "Sour Cream",
-      "completed": false
-    },
-    {
-      "id": 8,
-      "text": "Eggs (6)",
-      "completed": false
-    },
-    {
-      "id": 9,
-      "text": "Toaster Pastries",
-      "completed": false
-    },
-    {
-      "id": 10,
-      "text": "Blueberry Cereal Bars",
-      "completed": false
-    },
-    {
-      "id": 11,
-      "text": "Oat milk",
-      "completed": false
-    },
-    {
-      "id": 12,
-      "text": "Bolognese sauce",
-      "completed": false
-    },
-    {
-      "id": 13,
-      "text": "Capellini",
-      "completed": false
-    },
-    {
-      "id": 14,
-      "text": "Red Wine Vinegar",
-      "completed": false
-    },
-    {
-      "id": 15,
-      "text": "80/20 Ground Beef",
-      "completed": false
-    },
-    {
-      "id": 16,
-      "text": "Ribeye Steak",
-      "completed": false
-    },
-    {
-      "id": 17,
-      "text": "Spanish Style Rice",
-      "completed": false
-    },
-    {
-      "id": 18,
-      "text": "Fiery chicken",
-      "completed": false
-    },
-    {
-      "id": 19,
-      "text": "Potstickers",
-      "completed": false
-    },
-    {
-      "id": 20,
-      "text": "Salsa Autentica",
-      "completed": false
-    },
-    {
-      "id": 21,
-      "text": "Belgian waffles",
-      "completed": false
-    },
-    {
-      "id": 22,
-      "text": "Sourdough Bread",
-      "completed": false
-    },
-    {
-      "id": 23,
-      "text": "Chocolate ice cream",
-      "completed": false
-    }
-  ]
-},
-{
-  "id": 3,
-  "store": "Stop&Shop",
-  "completed": false,
-  "expanded": false,
-  "items": [{
-      "id": 1,
-      "text": "Lemons (4)",
-      "completed": false
-    },
-    {
-      "id": 2,
-      "text": "Avacado",
-      "completed": false
-    },
-    {
-      "id": 3,
-      "text": "Vlasic Stackers Pickles",
-      "completed": false
-    },
-    {
-      "id": 4,
-      "text": "Violife Cheddar Shreds",
-      "completed": false
-    },
-    {
-      "id": 5,
-      "text": "Vine Tomatoes",
-      "completed": false
-    },
-    {
-      "id": 6,
-      "text": "Potatoes (2)",
-      "completed": false
-    },
-    {
-      "id": 7,
-      "text": "15 Grain Bread",
-      "completed": false
-    },
-    {
-      "id": 8,
-      "text": "Cheez-It White Cheddar",
-      "completed": false
-    },
-    {
-      "id": 9,
-      "text": "Chicken wings",
-      "completed": false
-    },
-    {
-      "id": 10,
-      "text": "LaCroix seltzer (12)",
-      "completed": false
-    },
-    {
-      "id": 11,
-      "text": "Fresh Pet dog food",
-      "completed": false
-    },
-    {
-      "id": 12,
-      "text": "Utz Barbecue Chips",
-      "completed": false
-    },
-    {
-      "id": 13,
-      "text": "FAGE 0% Yogurt",
-      "completed": false
-    },
-    {
-      "id": 14,
-      "text": "Frozen Burritos",
-      "completed": false
-    },
-    {
-      "id": 15,
-      "text": "Rao's Penne Arrabbiata",
-      "completed": false
-    },
-    {
-      "id": 16,
-      "text": "Uncrustables (10)",
-      "completed": false
-    },
-    {
-      "id": 17,
-      "text": "Fat free sour cream",
-      "completed": false
-    },
-    {
-      "id": 18,
-      "text": "Cheddar shreds",
-      "completed": false
-    }
-  ]
-},
-{
-  "id": 4,
-  "store": "Home Depot",
-  "completed": false,
-  "expanded": true,
-  "items": [{
+[
+  {
     "id": 1,
-    "text": "RID-X Septic (3-Dose)",
-    "completed": false
-  }]
-}
+    "store": "Costco",
+    "completed": false,
+    "expanded": false,
+    "items": [
+      {
+        "id": 1,
+        "text": "Ziploc bags",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "text": "Lysol (3pk)",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "text": "Sponges",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "text": "Tide Pods (F&G)",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "text": "Egg Bites",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "text": "Rotisserie Chicken",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "text": "Bottled Water (40pk)",
+        "completed": false
+      },
+      {
+        "id": 8,
+        "text": "Blueberries",
+        "completed": false
+      },
+      {
+        "id": 9,
+        "text": "Blackberries",
+        "completed": false
+      },
+      {
+        "id": 10,
+        "text": "Strawberries",
+        "completed": false
+      },
+      {
+        "id": 11,
+        "text": "Raspberries",
+        "completed": false
+      },
+      {
+        "id": 12,
+        "text": "Paper Towels (Bounty)",
+        "completed": false
+      },
+      {
+        "id": 13,
+        "text": "Toilet Paper (Charmin)",
+        "completed": false
+      },
+      {
+        "id": 14,
+        "text": "Oat Milk (6pk)",
+        "completed": false
+      },
+      {
+        "id": 15,
+        "text": "Butter (Kerrygold)",
+        "completed": false
+      },
+      {
+        "id": 16,
+        "text": "Mayonnaise",
+        "completed": false
+      },
+      {
+        "id": 17,
+        "text": "Ketchup",
+        "completed": false
+      },
+      {
+        "id": 18,
+        "text": "Cilantro Lime Rice",
+        "completed": false
+      },
+      {
+        "id": 19,
+        "text": "Bacon crumbles",
+        "completed": false
+      },
+      {
+        "id": 20,
+        "text": "Nongshim Ramen",
+        "completed": false
+      },
+      {
+        "id": 21,
+        "text": "Aller-Fex",
+        "completed": false
+      },
+      {
+        "id": 22,
+        "text": "Aleve",
+        "completed": false
+      },
+      {
+        "id": 23,
+        "text": "Dove Bar Soap",
+        "completed": false
+      },
+      {
+        "id": 24,
+        "text": "Liquid I.V.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "store": "Trader Joes",
+    "completed": false,
+    "expanded": false,
+    "items": [
+      {
+        "id": 1,
+        "text": "Salads",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "text": "Green onions",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "text": "Bananas (3)",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "text": "Lemons (4)",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "text": "Rosemary Ham",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "text": "Smoked Turkey",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "text": "Cheddar slices",
+        "completed": false
+      },
+      {
+        "id": 8,
+        "text": "Sour Cream",
+        "completed": false
+      },
+      {
+        "id": 9,
+        "text": "Eggs (6pk)",
+        "completed": false
+      },
+      {
+        "id": 10,
+        "text": "Toaster Pastries",
+        "completed": false
+      },
+      {
+        "id": 11,
+        "text": "Blueberry Cereal Bars",
+        "completed": false
+      },
+      {
+        "id": 12,
+        "text": "Oat milk",
+        "completed": false
+      },
+      {
+        "id": 13,
+        "text": "Bolognese sauce",
+        "completed": false
+      },
+      {
+        "id": 14,
+        "text": "Capellini",
+        "completed": false
+      },
+      {
+        "id": 15,
+        "text": "Red Wine Vinegar",
+        "completed": false
+      },
+      {
+        "id": 16,
+        "text": "80/20 Ground Beef",
+        "completed": false
+      },
+      {
+        "id": 17,
+        "text": "Ribeye Steak",
+        "completed": false
+      },
+      {
+        "id": 18,
+        "text": "Spanish Style Rice",
+        "completed": false
+      },
+      {
+        "id": 18,
+        "text": "Fiery chicken",
+        "completed": false
+      },
+      {
+        "id": 20,
+        "text": "Potstickers",
+        "completed": false
+      },
+      {
+        "id": 21,
+        "text": "Salsa Autentica",
+        "completed": false
+      },
+      {
+        "id": 22,
+        "text": "Belgian waffles",
+        "completed": false
+      },
+      {
+        "id": 23,
+        "text": "Sourdough Bread",
+        "completed": false
+      },
+      {
+        "id": 24,
+        "text": "Chocolate ice cream",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "store": "Stop&Shop",
+    "completed": false,
+    "expanded": false,
+    "items": [
+      {
+        "id": 1,
+        "text": "Lemons (4)",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "text": "Avacado",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "text": "Vlasic Stackers Pickles",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "text": "Violife Cheddar Shreds",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "text": "Vine Tomatoes",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "text": "Potatoes (2)",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "text": "15 Grain Bread",
+        "completed": false
+      },
+      {
+        "id": 8,
+        "text": "Cheez-It White Cheddar",
+        "completed": false
+      },
+      {
+        "id": 9,
+        "text": "Chicken wings",
+        "completed": false
+      },
+      {
+        "id": 10,
+        "text": "LaCroix seltzer (12pk)",
+        "completed": false
+      },
+      {
+        "id": 11,
+        "text": "Fresh Pet dog food",
+        "completed": false
+      },
+      {
+        "id": 12,
+        "text": "DrSquatch soap",
+        "completed": false
+      },
+      {
+        "id": 13,
+        "text": "Utz Barbecue Chips",
+        "completed": false
+      },
+      {
+        "id": 14,
+        "text": "FAGE 0% Yogurt",
+        "completed": false
+      },
+      {
+        "id": 15,
+        "text": "Frozen Burritos",
+        "completed": false
+      },
+      {
+        "id": 16,
+        "text": "Rao's Penne Arrabbiata",
+        "completed": false
+      },
+      {
+        "id": 17,
+        "text": "Uncrustables (10pk)",
+        "completed": false
+      },
+      {
+        "id": 18,
+        "text": "Fat free sour cream",
+        "completed": false
+      },
+      {
+        "id": 19,
+        "text": "Cheddar shreds",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "store": "Home Depot",
+    "completed": false,
+    "expanded": true,
+    "items": [
+      {
+        "id": 1,
+        "text": "RID-X Septic (3pk)",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "store": "Walmart",
+    "completed": false,
+    "expanded": false,
+    "items": [
+      {
+        "id": 1,
+        "text": "Reynolds Wrap - Non-Stick, 150sq",
+        "completed": false
+      }
+    ]
+  }
 ]

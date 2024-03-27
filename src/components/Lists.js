@@ -1,6 +1,7 @@
 import { ListItem } from "./ListItem";
 import { EditList } from "./EditList";
 import { CiSquareRemove, CiSquarePlus, CiSquareMinus } from "react-icons/ci";
+import { RxReset } from "react-icons/rx";
 
 export const Lists = ({
   toggleItemComplete,
@@ -14,11 +15,13 @@ export const Lists = ({
   AddItem,
   newItemText,
   deleteList,
+  resetList,
+  listIsResettable,
   toggleList,
   expandedLists
 }) => {
   return (
-    <li key={list.id} draggable>
+    <li key={list.id}>
       <h3 className={"list-name" + (expandedLists.includes(list.id) ? " expanded" : "") + (list.completed ? " completed" : "")}>
         <span>
           <strong
@@ -28,6 +31,15 @@ export const Lists = ({
           >
             {list.store}
           </strong>
+          {listIsResettable(list) && (
+            <RxReset
+              title={`Reset ${list.store}`}
+              size="24"
+              onClick={() => {
+                resetList(list);
+              }}
+            />
+          )}
           {list.completed && (
             <CiSquareRemove
               className="icon-remove-list"
